@@ -1,0 +1,48 @@
+.fd__navbar {
+    position: relative;
+    display: flex;
+    height: 40px;
+    padding: 5px;
+    justify-content: center;
+}
+
+.fd_menu {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    margin-bottom: 0;
+    gap: 15px;
+    position: fixed;
+    right: 2rem;
+    height: 30px;
+}
+
+.fd__search__input {
+    padding: 5px 130px 5px 15px;
+    border-radius: 15px;
+}
+
+.fd__search__icon {
+    position: absolute;
+    align-self: center;
+    margin-left: 29rem;
+}
+
+li { list-style-type: none; }
+
+.fd__dropdown__menu {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+img {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-image: url('https://via.placeholder.com/200x200');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
