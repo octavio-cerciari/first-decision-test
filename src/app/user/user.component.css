@@ -1,0 +1,61 @@
+.fd__user__container {
+    display: flex;
+    padding: 4rem 6rem;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    position: absolute;
+    width: -webkit-fill-available;
+}
+
+h1 {margin: 0;}
+
+.fd__user__menu {
+    display: flex;
+    margin-top: 20px;
+}
+
+.fd__align-end {
+    right: 6rem;
+    position: absolute;
+}
+
+.fd__bt__new__user {
+    padding: 5.5px 20px;
+    border-radius: 10px;
+}
+
+.fd__search__input {
+    padding: 5px 80px 5px 15px;
+    border-radius: 10px;
+    width: 285px;
+}
+
+.fd__filter__input {
+    border-radius: 10px;
+}
+
+.fd__search__icon {
+    position: relative;
+    align-self: center;
+    right: 22px;
+}
+
+.fd__user__table {
+    border-radius: 16px;
+    border: 1px solid black;
+    margin-top: 20px;
+}
+
+.fd__profile__picture {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+th, td, tr {
+    padding: 10px;
+    i {cursor: pointer;}
+    height: auto;
+    align-content: center;
+}

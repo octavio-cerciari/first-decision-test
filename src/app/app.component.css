@@ -1,8 +1,9 @@
 .fd__container {
-	display: flex;
+	display: -webkit-inline-box;
 }
 
 .fd__content {
+	display: flex;
 	margin-left: 40px;
-	&.toggled { width: 140px; }
+	&.toggled { width: 100px; }
 }

@@ -1,1 +1,69 @@
-<p>usuario works!</p>
+<div class="fd__user__container">
+
+    <h1>Usuários</h1>
+    <div class="fd__user__menu">
+        <input type="text" placeholder="Pesquise pelo nome ou e-mail" class="fd__search__input" (keyup)="searchInput($event)">
+
+        <span class="fd__search__icon">
+          <i class="fa fa-light fa-search"></i>
+        </span>
+
+        <select name="filter" class="fd__filter__input">
+            <option value="Todos">Todos</option>
+            <option value="Ativo">Ativo</option>
+            <option value="Pendente">Pendente</option>
+            <option value="Bloqueado">Bloqueado</option>
+          </select>
+
+          <div class="fd__align-end">
+            <button class="fd__bt__new__user">Novo usuário</button>
+          </div>
+    </div>
+
+    <table mat-table [dataSource]="dataSource" class="fd__user__table"  matSort (matSortChange)="announceSortChange($event)">
+
+      <!-- Img Column -->
+      <ng-container matColumnDef="picture">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element" style="text-align: center"><img src="../../assets/img/pngegg.png" alt="" class="fd__profile__picture"></td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Nome </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}}<br>{{element.email}} </td>
+      </ng-container>
+  
+      <!-- Status Column -->
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef> Status </th>
+        <td mat-cell *matCellDef="let element"> {{element.createdDate}} </td>
+      </ng-container>
+
+      <!-- Created Date Column -->
+      <ng-container matColumnDef="createdDate">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Created Date"> Data de criação </th>
+        <td mat-cell *matCellDef="let element"> {{element.createdDate}} </td>
+      </ng-container>
+
+      <!-- Last Access Column -->
+      <ng-container matColumnDef="lastAccess">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Last Access"> Último acesso </th>
+        <td mat-cell *matCellDef="let element"> {{element.lastAccess}} </td>
+      </ng-container>
+
+      <!-- Option Column -->
+      <ng-container matColumnDef="options">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element"> <i class="fa fa-light fa-edit"></i></td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  
+    <mat-paginator [pageSizeOptions]="[5, 10, 15]"
+                    showFirstLastButtons
+                    aria-label="Select page of periodic elements">
+    </mat-paginator>
+</div>
