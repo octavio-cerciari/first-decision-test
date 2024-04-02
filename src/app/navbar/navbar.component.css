@@ -4,6 +4,7 @@
     height: 40px;
     padding: 5px;
     justify-content: center;
+    border-bottom: 1px solid black;
 }
 
 .fd_menu {
@@ -25,16 +26,16 @@
 .fd__search__icon {
     position: absolute;
     align-self: center;
-    margin-left: 29rem;
+    margin-left: 19rem;
 }
-
-li { list-style-type: none; }
 
 .fd__dropdown__menu {
     display: flex;
     align-items: center;
     gap: 5px;
 }
+
+li { cursor: pointer; }
 
 img {
     display: inline-block;

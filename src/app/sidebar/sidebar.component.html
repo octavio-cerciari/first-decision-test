@@ -1,1 +1,16 @@
-<p>sidebar works!</p>
+<div [ngClass]="toogled ? 'fd__sidebar toggled' : 'fd__sidebar'">
+    <ul class="fd__side__button"><li (click)="toogleSidebar()">
+        <i *ngIf="!toogled" class="fa fa-light fa-chevron-right"></i>
+        <i *ngIf="toogled" class="fa fa-light fa-chevron-left"></i>
+    </li></ul>
+    
+    <ul class="fd__side__menu">
+        <li [ngClass]="toogled ? 'fd__link toggled' : 'fd__link'"><i class="fa fa-light fa-house"></i><span *ngIf="toogled">Home</span></li>
+        <li [ngClass]="toogled ? 'fd__link toggled' : 'fd__link'"><i class="fa fa-light fa-comment"></i><span *ngIf="toogled">Comments</span></li>
+        <li [ngClass]="toogled ? 'fd__link toggled' : 'fd__link'"><i class="fa fa-regular fa-user"></i><span *ngIf="toogled">Users</span></li>
+        <li [ngClass]="toogled ? 'fd__link toggled' : 'fd__link'"><i class="fa fa-light fa-repeat"></i><span *ngIf="toogled">Changes</span></li>
+        <li [ngClass]="toogled ? 'fd__link toggled' : 'fd__link'"><i class="fa fa-light fa-brain"></i><span *ngIf="toogled">B.I</span></li>
+        <li [ngClass]="toogled ? 'fd__link toggled' : 'fd__link'"><i class="fa fa-solid fa-chart-column"></i><span *ngIf="toogled">Graph</span></li>
+    </ul>
+</div>
+

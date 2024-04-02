@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'first-decision-tet';
+  toogled = false;
+
+  toogleSidebar(toogled: boolean) {
+    console.log(toogled)
+    this.toogled = toogled;
+  }
 }
