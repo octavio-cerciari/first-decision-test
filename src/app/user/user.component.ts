@@ -4,6 +4,8 @@ import { MatPaginator, MatPaginatorIntl } from '@angular/material/paginator';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { UserInterface } from 'src/core/user.interface';
+import { UserModalComponent } from './user-modal/user-modal.component';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 const ELEMENT_DATA: UserInterface[] = [
   { name: 'Octavio Cerciari', email: 'octavio.cerciari@gmail.com', status: 'Ativo', createdDate: '10/10/2020', lastAccess: '10/10/2020 às 13:00h' },
@@ -18,7 +20,8 @@ const ELEMENT_DATA: UserInterface[] = [
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit, AfterViewInit {
-  constructor(private _liveAnnouncer: LiveAnnouncer) {}
+  modalDialog: MatDialogRef<UserModalComponent> | any;
+  constructor(private _liveAnnouncer: LiveAnnouncer, public matDialog: MatDialog,) {}
 
   displayedColumns: string[] = ['picture', 'name', 'status', 'createdDate', 'lastAccess', 'options'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
@@ -47,5 +50,15 @@ export class UserComponent implements OnInit, AfterViewInit {
     } else {
       this._liveAnnouncer.announce('Sorting cleared');
     }
+  }
+
+  openUserModal() {
+    this.modalDialog = this.matDialog.open( UserModalComponent, {
+      data: null,
+      panelClass: 'user-modal'
+    } )
+    this.modalDialog.afterClosed().subscribe( ( result: any ) => {
+      
+    } );
   }
 }
