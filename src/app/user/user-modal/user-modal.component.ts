@@ -15,12 +15,16 @@ export class UserModalComponent implements OnInit {
     @Inject( MAT_DIALOG_DATA ) public data: UserInterface,
     ) {}
   tags = [] as string[];
+
   selectedLanguage = '';
+  selectedAccess = [''];
+  selectedContact = 'Telefone';
+
   userForm = new FormGroup( {
-    name: new FormControl( '', [Validators.required] ),
-    lastName: new FormControl( '', [Validators.required] ),
-    phone: new FormControl( '', [Validators.required] ),
-    email: new FormControl( '', [Validators.email, Validators.required] ),
+    name: new FormControl( '', [Validators.required, Validators.min(3), Validators.min(20)] ),
+    lastName: new FormControl( '', [Validators.required, Validators.min(3), Validators.min(20)] ),
+    phone: new FormControl( '', [Validators.required, Validators.min(11), Validators.min(11)]),
+    email: new FormControl( '', [Validators.email, Validators.required, Validators.min(3), Validators.min(20)] ),
     profile: new FormControl( '', [Validators.required] ),
     language: new FormControl( '', [Validators.required] ),
   } );
@@ -34,15 +38,32 @@ export class UserModalComponent implements OnInit {
     this.userForm.controls.lastName.setValue(user.lastName);
     this.userForm.controls.phone.setValue(user.phone);
     this.userForm.controls.email.setValue(user.email);
-    this.userForm.controls.language.setValue(user.language);    
+    this.userForm.controls.language.setValue(user.language);
+    this.selectedContact = user.preferredContact;
   }
 
   closeModal() {
     this.dialogRef.close();
   }
 
+  changeContact(value: string) {
+    this.selectedContact = value;
+  }
+
   sendInvite(newInvite: boolean) {
-    // if(this.userForm.invalid) return
-    this.dialogRef.close( { user: this.userForm.value, newInvite } );
+    if(this.userForm.invalid || !this.selectedContact) return
+
+    const user = {
+      name: this.userForm.controls.name.value,
+      lastName: this.userForm.controls.lastName.value,
+      email: this.userForm.controls.email.value,
+      phone: this.userForm.controls.phone.value,
+      preferredContact: this.selectedContact,
+      status: 'Ativo',
+      language: this.userForm.controls.language.value,
+      createdDate: new Date().toLocaleDateString(),
+      lastAccess: new Date().toLocaleDateString() + ' às ' + new Date().getHours() + ':' + new Date().getMinutes() + 'h',
+    } as UserInterface;
+    this.dialogRef.close( { user, newInvite } );
   }
 }

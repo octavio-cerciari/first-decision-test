@@ -8,10 +8,10 @@ import { UserModalComponent } from './user-modal/user-modal.component';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 const ELEMENT_DATA: UserInterface[] = [
-  { name: 'Octavio', lastName: 'Cerciari', phone: '16997966653', email: 'octavio.cerciari@gmail.com', status: 'Ativo', language: 'Português BR', createdDate: '10/10/2020', lastAccess: '10/10/2020 às 13:00h' },
-  { name: 'Nathalia', lastName: 'Cerciari', phone: '16997966653', email: 'nathalia.cerciari@gmail.com', status: 'Pendente', language: 'Inglês EN', createdDate: '10/10/2021', lastAccess: '10/10/2021 às 11:00h' },
-  { name: 'Nathan', lastName: 'Cerciari', phone: '16997966653', email: 'nathan.cerciari@gmail.com', status: 'Ativo', language: 'Português BR', createdDate: '10/10/2022', lastAccess: '10/10/2022 às 17:00h' },
-  { name: 'Fernando', lastName: 'Cerciari', phone: '16997966653', email: 'fernando.cerciari@gmail.com', status: 'Bloqueado', language: 'Espanhol ES', createdDate: '10/10/2023', lastAccess: '10/10/2023 às 10:00h' },
+  { name: 'Octavio', lastName: 'Cerciari', phone: '16997966653', email: 'octavio.cerciari@gmail.com', status: 'Ativo', language: 'Português BR', preferredContact: 'Todos', createdDate: '10/10/2020', lastAccess: '10/10/2020 às 13:00h' },
+  { name: 'Nathalia', lastName: 'Cerciari', phone: '16997966653', email: 'nathalia.cerciari@gmail.com', status: 'Pendente', language: 'Inglês EN', preferredContact: 'Telefone', createdDate: '10/10/2021', lastAccess: '10/10/2021 às 11:00h' },
+  { name: 'Nathan', lastName: 'Cerciari', phone: '16997966653', email: 'nathan.cerciari@gmail.com', status: 'Ativo', language: 'Português BR', preferredContact: 'E-mail', createdDate: '10/10/2022', lastAccess: '10/10/2022 às 17:00h' },
+  { name: 'Fernando', lastName: 'Cerciari', phone: '16997966653', email: 'fernando.cerciari@gmail.com', status: 'Bloqueado', language: 'Espanhol ES', preferredContact: 'Todos', createdDate: '10/10/2023', lastAccess: '10/10/2023 às 10:00h' },
 ] as UserInterface[];
 
 @Component({
@@ -46,7 +46,6 @@ export class UserComponent implements OnInit, AfterViewInit {
   }
 
   searchInput(filterValue: any) {
-    console.log(filterValue.target.value)
     this.dataSource.filter = filterValue.target.value;
   }
 
@@ -64,7 +63,8 @@ export class UserComponent implements OnInit, AfterViewInit {
       panelClass: 'user-modal'
     } )
     this.modalDialog.afterClosed().subscribe( ( result: any ) => {
-      console.log(result);
+      console.log(result)
+      if (result.newInvite) { ELEMENT_DATA.push(result.user); this.dataSource = new MatTableDataSource(ELEMENT_DATA); };
     } );
   }
 }

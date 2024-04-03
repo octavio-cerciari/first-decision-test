@@ -11,13 +11,13 @@
 				<div class="mb-3">
 					<div class="form-group col-md-6">
 						<label class="form-label">Nome</label>
-						<input type="text" placeholder="Nome" class="form-control" formControlName="name" required>
+						<input type="text" placeholder="Albert" class="form-control" formControlName="name" minlength="3" maxlength="20" required>
 					</div>
 				</div>
 				<div class="mb-3">
 					<div class="form-group col-md-6">
 						<label class="form-label">Sobrenome</label>
-						<input type="text" placeholder="Sobrenome" class="form-control" formControlName="lastName">
+						<input type="text" placeholder="Einstein" class="form-control" formControlName="lastName" minlength="3" maxlength="20">
 					</div>
 				</div>
 			</div>
@@ -26,13 +26,13 @@
 				<div class="mb-3">
 					<div class="form-group col-md-6">
 						<label class="form-label">Telefone</label>
-						<input type="text" placeholder="Telefone" class="form-control" mask="(00) 90000-0000" formControlName="phone">
+						<input type="text" placeholder="(00) 00000-0000" class="form-control" mask="(00) 90000-0000" formControlName="phone" minlength="11" maxlength="11">
 					</div>
 				</div>
 				<div class="mb-3">
 					<div class="form-group col-md-6">
 						<label class="form-label">E-mail corporativo</label>
-						<input type="text" placeholder="E-mail" class="form-control" formControlName="email">
+						<input type="text" placeholder="email@gmail.com" class="form-control" formControlName="email">
 					</div>
 				</div>
 			</div>
@@ -41,12 +41,13 @@
 				<div class="mb-3">
 					<div class="form-group col-md-12">
 						<label class="form-label">Perfil de acesso</label>
-						<select class="form-control">
-						  <option>Supervisor</option>
-						  <option>Gerente</option>
-						  <option>Analista</option>
-						  <option>Suporte</option>
-						  <option>Desenvolvedor</option>
+						<select class="form-control" formControlName="profile" [value]="selectedAccess">
+						  <option value="" disabled selected>Selecione...</option>
+						  <option value="Supervisor">Supervisor</option>
+						  <option value="Gerente">Gerente</option>
+						  <option value="Analista">Analista</option>
+						  <option value="Suporte">Suporte</option>
+						  <option value="Desenvolvedor">Desenvolvedor</option>
 						</select>
 					  </div>
 				</div>
@@ -54,6 +55,7 @@
 					<div class="form-group col-md-6">
 						<label class="form-label">Idioma</label>
 						<select class="form-control" formControlName="language" [value]="selectedLanguage">
+							<option value="" disabled selected>Selecione...</option>
 							<option value="Português BR">Português BR</option>
 							<option value="Inglês EN">Inglês EN</option>
 							<option value="Espanhol ES">Espanhol ES</option>
@@ -67,19 +69,19 @@
 						</div>
 						<div class="col-md-12"  style="display: flex; flex-direction: row; padding: 0; justify-content: space-between;">
 							<div class="form-check">
-								<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+								<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" [value]="selectedContact" checked (click)="changeContact('Telefone')">
 								<label class="form-check-label" for="exampleRadios1">
 								Telefone
 								</label>
 							</div>
 							<div class="form-check">
-								<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+								<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" [value]="selectedContact" (click)="changeContact('E-mail')">
 								<label class="form-check-label" for="exampleRadios2">
 								E-mail
 								</label>
 							</div>
 							<div class="form-check">
-								<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3">
+								<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" [value]="selectedContact" (click)="changeContact('Todos')">
 								<label class="form-check-label" for="exampleRadios3">
 								Todos
 								</label>
