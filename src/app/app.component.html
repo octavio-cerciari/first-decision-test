@@ -1,6 +1,7 @@
 <app-navbar></app-navbar>
-<div class="fd__container">
-    <app-sidebar (toggleEvent)="toogleSidebar($event)"></app-sidebar>
-    <router-outlet [ngClass]="toogled ? 'fd__content toggled':'fd__content'"></router-outlet>
-</div>
-
+<main>
+    <div class="fd__container">
+        <app-sidebar (toggleEvent)="toogleSidebar($event)"></app-sidebar>
+        <router-outlet [ngClass]="toogled ? 'fd__content toggled':'fd__content'"></router-outlet>
+    </div>
+</main>

@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { UserInterface } from 'src/core/models/user.interface';
 import { UserModalComponent } from './user-modal/user-modal.component';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { UserFilterStatusEnum } from 'src/core/enums/user-status.enum';
 
 const ELEMENT_DATA: UserInterface[] = [
   { name: 'Octavio', lastName: 'Cerciari', phone: '16997966653', email: 'octavio.cerciari@gmail.com', status: 'Ativo', language: 'Português BR', preferredContact: 'Todos', createdDate: '10/10/2020', lastAccess: '10/10/2020 às 13:00h' },
@@ -19,14 +20,15 @@ const ELEMENT_DATA: UserInterface[] = [
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.css']
 })
+
 export class UserComponent implements OnInit, AfterViewInit {
   modalDialog: MatDialogRef<UserModalComponent> | any;
+  userFilterStatusEnum = UserFilterStatusEnum;
   constructor(
     private _liveAnnouncer: LiveAnnouncer, 
     public matDialog: MatDialog,
     
     ) {
-    
   }
 
   displayedColumns: string[] = ['picture', 'name', 'status', 'createdDate', 'lastAccess', 'options'];
@@ -36,7 +38,15 @@ export class UserComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.dataSource.filterPredicate = (data: UserInterface, filter: string) => {
-      return data.name.toLocaleLowerCase().includes(filter.toLocaleLowerCase()) || data.email.toLocaleLowerCase().includes(filter.toLocaleLowerCase());
+      if (filter === UserFilterStatusEnum.TODOS) {
+        return data.status.toLowerCase().includes('');;
+      }
+      else if (filter === UserFilterStatusEnum.ATIVO || filter === UserFilterStatusEnum.PENDENTE || filter === UserFilterStatusEnum.BLOQUEADO) {
+        return data.status.toLowerCase().includes(filter.toLowerCase());
+      }
+      else {
+        return data.name.toLowerCase().includes(filter.toLowerCase()) || data.email.toLowerCase().includes(filter.toLowerCase());
+      }
      };
    }
 
@@ -45,8 +55,8 @@ export class UserComponent implements OnInit, AfterViewInit {
     this.dataSource.sort = this.sort;
   }
 
-  searchInput(filterValue: any) {
-    this.dataSource.filter = filterValue.target.value;
+  searchInput(event: Event) {
+    this.dataSource.filter = (event.target as HTMLInputElement).value;
   }
 
   announceSortChange(sortState: any) {
@@ -57,13 +67,16 @@ export class UserComponent implements OnInit, AfterViewInit {
     }
   }
 
+  filter(event: Event) {
+    this.dataSource.filter = (event.target as HTMLInputElement).value;
+  }
+
   openUserModal(element?: UserInterface) {
     this.modalDialog = this.matDialog.open( UserModalComponent, {
       data: element || null,
       panelClass: 'user-modal'
     } )
     this.modalDialog.afterClosed().subscribe( ( result: any ) => {
-      console.log(result)
       if (result.newInvite) { ELEMENT_DATA.push(result.user); this.dataSource = new MatTableDataSource(ELEMENT_DATA); };
     } );
   }

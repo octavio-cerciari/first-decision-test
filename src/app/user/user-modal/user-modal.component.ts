@@ -59,7 +59,7 @@ export class UserModalComponent implements OnInit {
       email: this.userForm.controls.email.value,
       phone: this.userForm.controls.phone.value,
       preferredContact: this.selectedContact,
-      status: 'Ativo',
+      status: 'Pendente',
       language: this.userForm.controls.language.value,
       createdDate: new Date().toLocaleDateString(),
       lastAccess: new Date().toLocaleDateString() + ' às ' + new Date().getHours() + ':' + new Date().getMinutes() + 'h',
