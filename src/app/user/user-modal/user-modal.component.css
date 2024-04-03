@@ -1,0 +1,45 @@
+h2, h3 { margin: 0; padding: 0; }
+.fd__subtitle {margin-bottom: 30px;}
+.user-modal {
+    border-radius: 15px;
+    padding: 1rem;
+}
+
+.fd__modal__header {
+    display: flex;
+    justify-content: space-between;
+
+    .fa-close {cursor: pointer;}
+}
+
+.form-check {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.form-label {
+    margin-bottom: 5px;
+}
+
+.form-check-input {
+    margin: 0 5px 0 0;
+}
+
+.fd__buttons__row {
+    display: flex;
+    justify-content: space-between;
+
+    button { 
+        width: 47%;
+        height: 35px;
+        &.primary {
+            border-radius: 10px;
+            border: none;
+        }
+        &.outline {
+            background-color: transparent;
+            border: none;
+        }
+    }
+}
