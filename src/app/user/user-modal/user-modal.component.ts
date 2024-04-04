@@ -17,8 +17,8 @@ export class UserModalComponent implements OnInit {
   tags = [] as string[];
 
   selectedLanguage = '';
-  selectedAccess = [''];
-  selectedContact = 'Telefone';
+  selectedProfile = '';
+  selectedPreferredContact = '';
 
   userForm = new FormGroup( {
     name: new FormControl( '', [Validators.required, Validators.min(3), Validators.min(20)] ),
@@ -27,6 +27,7 @@ export class UserModalComponent implements OnInit {
     email: new FormControl( '', [Validators.email, Validators.required, Validators.min(3), Validators.min(20)] ),
     profile: new FormControl( '', [Validators.required] ),
     language: new FormControl( '', [Validators.required] ),
+    preferredContact: new FormControl( '', [Validators.required] ),
   } );
 
   ngOnInit(): void {
@@ -38,8 +39,9 @@ export class UserModalComponent implements OnInit {
     this.userForm.controls.lastName.setValue(user.lastName);
     this.userForm.controls.phone.setValue(user.phone);
     this.userForm.controls.email.setValue(user.email);
-    this.userForm.controls.language.setValue(user.language);
-    this.selectedContact = user.preferredContact;
+    this.selectedLanguage = user.language;
+    this.selectedProfile = user.profile;
+    this.selectedPreferredContact = user.preferredContact;
   }
 
   closeModal() {
@@ -47,20 +49,21 @@ export class UserModalComponent implements OnInit {
   }
 
   changeContact(value: string) {
-    this.selectedContact = value;
+    this.selectedPreferredContact = value;
   }
 
   sendInvite(newInvite: boolean) {
-    if(this.userForm.invalid || !this.selectedContact) return
+    if(this.userForm.invalid || !this.selectedPreferredContact) return
 
-    const user = {
+    let user = {
       name: this.userForm.controls.name.value,
       lastName: this.userForm.controls.lastName.value,
       email: this.userForm.controls.email.value,
       phone: this.userForm.controls.phone.value,
-      preferredContact: this.selectedContact,
+      preferredContact: this.selectedPreferredContact,
       status: 'Pendente',
-      language: this.userForm.controls.language.value,
+      profile: this.selectedProfile,
+      language: this.selectedLanguage,
       createdDate: new Date().toLocaleDateString(),
       lastAccess: new Date().toLocaleDateString() + ' às ' + new Date().getHours() + ':' + new Date().getMinutes() + 'h',
     } as UserInterface;

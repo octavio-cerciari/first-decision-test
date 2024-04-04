@@ -20,6 +20,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatDialogModule } from '@angular/material/dialog';
+import {MAT_RADIO_DEFAULT_OPTIONS, MatRadioModule} from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -37,12 +38,14 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatSortModule,
     ReactiveFormsModule,
     MatDialogModule,
+    MatRadioModule,
     FormsModule,
     CommonModule,
   ],
-  providers: [
-    provideAnimations()
-  ],
+  providers: [provideAnimations(), {
+    provide: MAT_RADIO_DEFAULT_OPTIONS,
+    useValue: { color: 'blue' },
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

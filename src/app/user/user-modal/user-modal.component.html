@@ -41,7 +41,7 @@
 				<div class="mb-3">
 					<div class="form-group col-md-12">
 						<label class="form-label">Perfil de acesso</label>
-						<select class="form-control" formControlName="profile" [value]="selectedAccess">
+						<select class="form-control" formControlName="profile" [(ngModel)]="selectedProfile">
 						  <option value="" disabled selected>Selecione...</option>
 						  <option value="Supervisor">Supervisor</option>
 						  <option value="Gerente">Gerente</option>
@@ -54,7 +54,7 @@
 				<div class="mb-3">
 					<div class="form-group col-md-6">
 						<label class="form-label">Idioma</label>
-						<select class="form-control" formControlName="language" [value]="selectedLanguage">
+						<select class="form-control" formControlName="language" [(ngModel)]="selectedLanguage">
 							<option value="" disabled selected>Selecione...</option>
 							<option value="Português BR">Português BR</option>
 							<option value="Inglês EN">Inglês EN</option>
@@ -64,28 +64,34 @@
 				</div>
 				<div class="mb-3">
 					<div class="form-group col-md-6">
-						<div class="col-md-12" style="margin-bottom: 6px !important; padding: 0;">
+						<div class="col-md-12">
 							<label class="form-label">Contato preferencial</label>
 						</div>
-						<div class="col-md-12"  style="display: flex; flex-direction: row; padding: 0; justify-content: space-between;">
-							<div class="form-check">
-								<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" [value]="selectedContact" checked (click)="changeContact('Telefone')">
+						
+						<div class="col-md-12"  style="display: flex; flex-direction: row; padding: 0; justify-content: space-between; zoom: 0.9">
+							<mat-radio-group aria-label="Select an option" class="radio_button_group" formControlName="preferredContact" [(ngModel)]="selectedPreferredContact">
+								<mat-radio-button after value="Telefone" class="radio_button">Telefone</mat-radio-button>
+								<mat-radio-button after value="E-mail" class="radio_button">E-mail</mat-radio-button>
+								<mat-radio-button after value="Todos" class="radio_button">Todos</mat-radio-button>
+							</mat-radio-group>
+							<!-- <div class="form-check">
+								<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" formControlName="language" [(ngModel)]="selectedPreferredContact" checked (click)="changeContact('Telefone')">
 								<label class="form-check-label" for="exampleRadios1">
 								Telefone
 								</label>
 							</div>
 							<div class="form-check">
-								<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" [value]="selectedContact" (click)="changeContact('E-mail')">
+								<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" formControlName="language" [(ngModel)]="selectedPreferredContact" (click)="changeContact('E-mail')">
 								<label class="form-check-label" for="exampleRadios2">
 								E-mail
 								</label>
 							</div>
 							<div class="form-check">
-								<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" [value]="selectedContact" (click)="changeContact('Todos')">
+								<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" formControlName="language" [(ngModel)]="selectedPreferredContact" (click)="changeContact('Todos')">
 								<label class="form-check-label" for="exampleRadios3">
 								Todos
 								</label>
-							</div>
+							</div> -->
 						</div>
 					</div>
 				</div>
