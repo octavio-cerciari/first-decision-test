@@ -1,10 +1,11 @@
 <div class="fd__navbar">
     <input type="text" placeholder="O que você esta buscando?" class="fd__search__input"><span class="fd__search__icon"><i class="fa fa-light fa-search"></i></span>
-
     <ul class="fd_menu">
         <li><i class="fa fa-light fa-book-open"></i></li>
         <li><i class="fa fa-light fa-gear"></i></li>
         <li><i class="fa fa-regular fa-bell"></i></li>
         <li class="fd__dropdown__menu"><img src="../../assets/img/pngegg.png" alt="">Ana<i class="fa fa-solid fa-chevron-down"></i></li>
+        <li *ngIf="theme === 'light-theme'"><i class="fa fa-regular fa-moon" (click)="(darkMode())"></i></li>
+        <li *ngIf="theme === 'dark-theme'"><i class="fa fa-regular fa-sun" (click)="(darkMode())"></i></li>
     </ul>
 </div>

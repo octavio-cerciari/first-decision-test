@@ -6,9 +6,10 @@
     align-content: center;
     position: absolute;
     width: -webkit-fill-available;
+
 }
 
-h1 {margin: 0;}
+h1 { margin: 0; color: var(--text-color); }
 
 .fd__user__menu {
     display: flex;
@@ -21,30 +22,47 @@ h1 {margin: 0;}
 }
 
 .fd__bt__new__user {
-    padding: 5.5px 20px;
+    padding: 10px 30px;
     border-radius: 10px;
+    border: none;
+    background-color: var(--primary);
+    color: white;
 }
 
 .fd__search__input {
     padding: 5px 80px 5px 15px;
     border-radius: 10px;
     width: 285px;
+    border: 0.5px solid var(--border-color);
+    color: var(--text-color);
+    background-color: var(--filter-background-color);
 }
 
 .fd__filter__input {
     border-radius: 10px;
+    border: 0.5px solid var(--border-color);
+    color: var(--text-color);
+    background-color: var(--filter-background-color);
 }
 
 .fd__search__icon {
     position: relative;
     align-self: center;
     right: 22px;
+    color: var(--text-color);
 }
 
 .fd__user__table {
-    border-radius: 16px;
+    border-top-right-radius: 16px;
+    border-top-left-radius: 16px;
     border: 1px solid black;
     margin-top: 20px;
+    overflow: hidden !important;
+}
+
+.fd__paginator {
+    border-bottom-right-radius: 16px;
+    border-bottom-left-radius: 16px;
 }
 
 .fd__profile__picture {
@@ -58,4 +76,21 @@ th, td, tr {
     i {cursor: pointer;}
     height: auto;
     align-content: center;
+    
+}
+
+/* .mat-mdc-header-row:nth-child(odd) { background-color: var(--navbar-color); color: var(--text-color); } */
+tr:nth-child(even) { background-color: var(--body); color: var(--text-color); }
+tr:nth-child(odd) { background-color: var(--navbar-color); color: var(--text-color); }
+
+mat-paginator {
+    background-color: var(--navbar-color);
+    color: var(--text-color);
+}
+
+::ng-deep .mat-mdc-select-arrow {
+    color: var(--text-color) !important;
+}
+::ng-deep .mat-mdc-select-trigger {
+    color: var(--text-color) !important;
 }

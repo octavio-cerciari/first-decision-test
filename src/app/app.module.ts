@@ -15,12 +15,15 @@ import { UserModalComponent } from './user/user-modal/user-modal.component';
 // Prividers
 import { provideAnimations } from '@angular/platform-browser/animations';
 
+
 // Angular Material
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatDialogModule } from '@angular/material/dialog';
 import {MAT_RADIO_DEFAULT_OPTIONS, MatRadioModule} from '@angular/material/radio';
+import { NgxMaskDirective, NgxMaskPipe, provideEnvironmentNgxMask } from 'ngx-mask';
+
 
 @NgModule({
   declarations: [
@@ -39,10 +42,12 @@ import {MAT_RADIO_DEFAULT_OPTIONS, MatRadioModule} from '@angular/material/radio
     ReactiveFormsModule,
     MatDialogModule,
     MatRadioModule,
+    NgxMaskDirective, 
+    NgxMaskPipe,
     FormsModule,
     CommonModule,
   ],
-  providers: [provideAnimations(), {
+  providers: [provideAnimations(), provideEnvironmentNgxMask(),{
     provide: MAT_RADIO_DEFAULT_OPTIONS,
     useValue: { color: 'blue' },
   }],

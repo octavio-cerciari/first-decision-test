@@ -1,10 +1,10 @@
 .fd__sidebar {
     width: 40px;
-    border-right: 1px solid black;
     position: absolute;
     top: 0;
     height: 100vh;
-    background-color: white;
+    background-color: var(--navbar-color);
+    color: var(--text-color);
 
     &.toggled { width: 140px; }
 }

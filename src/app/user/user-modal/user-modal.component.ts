@@ -23,7 +23,7 @@ export class UserModalComponent implements OnInit {
   userForm = new FormGroup( {
     name: new FormControl( '', [Validators.required, Validators.min(3), Validators.min(20)] ),
     lastName: new FormControl( '', [Validators.required, Validators.min(3), Validators.min(20)] ),
-    phone: new FormControl( '', [Validators.required, Validators.min(11), Validators.min(11)]),
+    phone: new FormControl( '', [Validators.required]),
     email: new FormControl( '', [Validators.email, Validators.required, Validators.min(3), Validators.min(20)] ),
     profile: new FormControl( '', [Validators.required] ),
     language: new FormControl( '', [Validators.required] ),

@@ -26,7 +26,7 @@
 				<div class="mb-3">
 					<div class="form-group col-md-6">
 						<label class="form-label">Telefone</label>
-						<input type="text" placeholder="(00) 00000-0000" class="form-control" mask="(00) 90000-0000" formControlName="phone" minlength="11" maxlength="11">
+						<input type="text" placeholder="(00) 00000-0000" mask="(00) 00000-0000"  class="form-control" formControlName="phone">
 					</div>
 				</div>
 				<div class="mb-3">
@@ -67,39 +67,20 @@
 						<div class="col-md-12">
 							<label class="form-label">Contato preferencial</label>
 						</div>
-						
-						<div class="col-md-12"  style="display: flex; flex-direction: row; padding: 0; justify-content: space-between; zoom: 0.9">
+						<div class="col-md-12"  style="display: flex; padding: 0; justify-content: center; zoom: 0.9">
 							<mat-radio-group aria-label="Select an option" class="radio_button_group" formControlName="preferredContact" [(ngModel)]="selectedPreferredContact">
-								<mat-radio-button after value="Telefone" class="radio_button">Telefone</mat-radio-button>
-								<mat-radio-button after value="E-mail" class="radio_button">E-mail</mat-radio-button>
-								<mat-radio-button after value="Todos" class="radio_button">Todos</mat-radio-button>
+								<mat-radio-button labelPosition='before' value="Telefone" class="radio_button">Telefone</mat-radio-button>
+								<mat-radio-button labelPosition='before' after value="E-mail" class="radio_button">E-mail</mat-radio-button>
+								<mat-radio-button labelPosition='before' after value="Todos" class="radio_button">Todos</mat-radio-button>
 							</mat-radio-group>
-							<!-- <div class="form-check">
-								<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" formControlName="language" [(ngModel)]="selectedPreferredContact" checked (click)="changeContact('Telefone')">
-								<label class="form-check-label" for="exampleRadios1">
-								Telefone
-								</label>
-							</div>
-							<div class="form-check">
-								<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" formControlName="language" [(ngModel)]="selectedPreferredContact" (click)="changeContact('E-mail')">
-								<label class="form-check-label" for="exampleRadios2">
-								E-mail
-								</label>
-							</div>
-							<div class="form-check">
-								<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" formControlName="language" [(ngModel)]="selectedPreferredContact" (click)="changeContact('Todos')">
-								<label class="form-check-label" for="exampleRadios3">
-								Todos
-								</label>
-							</div> -->
 						</div>
 					</div>
 				</div>
 				<div class="mb-3">
 					<div class="col-md-12 fd__buttons__row">
-						<button class="outline" (click)="closeModal()">Fechar</button>
-						<button class="primary" *ngIf="!data" (click)="sendInvite(true)">Enviar convite</button>
-						<button class="primary" *ngIf="data" (click)="sendInvite(false)">Salvar alterações</button>
+						<button class="secondary-button-outline" (click)="closeModal()">Fechar</button>
+						<button class="secondary-button" *ngIf="!data" (click)="sendInvite(true)">Enviar convite</button>
+						<button class="secondary-button" *ngIf="data" (click)="sendInvite(false)">Salvar alterações</button>
 					</div>
 				</div>
 			</div>

@@ -51,4 +51,29 @@ table {
 
 li { list-style-type: none; }
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: var(--body); }
+
+
+:root {
+	--body: aliceblue;
+	--filter-background-color: white;
+	--modal-background-color: white;
+	--navbar-color: white;
+	--border-color: #d0d7de;
+	--primary: #4874a9;
+	--secondary: #6959CD;
+	--text-color: inherit;
+	--text-alternative-color: #191970;
+  }
+  
+  :root .dark-theme {
+	--body: #151e29;
+	--filter-background-color: #151e29;
+	--navbar-color: #111821;
+	--border-color: #d0d7de;
+	--primary: #48a97c;
+	--secondary: #6959CD;
+	--text-color: white;
+	--text-alternative-color: #191970;
+  }
+  
